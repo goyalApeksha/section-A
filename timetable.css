@@ -1,0 +1,158 @@
+body, h1, h2, h3, h4, h5, h6, p, table, th, td {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    padding: 20px;
+    background: #fff;
+    color: #000;
+  }
+
+  .container {
+    max-width: 95%;
+    margin: auto;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .logo img {
+    width: 80px;
+    height: auto;
+    margin-right: 15px;
+  }
+
+  .heading-text {
+    flex: 1;
+    text-align: center;
+  }
+
+  .heading-text h1 {
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+
+  .heading-text h2 {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 5px;
+  }
+
+  .sub-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    font-weight: bold;
+  }
+
+  .sub-info div {
+    margin: 5px 0;
+    flex: 1 1 200px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  th, td {
+    border: 1px solid #000;
+    padding: 8px 5px;
+    text-align: center;
+  }
+
+  th {
+    font-weight: 700;
+    background-color: #f0f0f0;
+  }
+
+  /* Specific column widths */
+  th.time-day, td.time-day {
+    width: 8%;
+    font-weight: 700;
+  }
+
+  /* Color coded cells */
+
+  /* Light blue */
+  .lightblue {
+    background-color: #add8e6;
+  }
+
+  /* Pink */
+  .pink {
+    background-color: #f49ac2;
+  }
+
+  /* Orange */
+  .orange {
+    background-color: #f4b942;
+    color: #000;
+  }
+
+  /* Light green */
+  .lightgreen {
+    background-color: #98f5e1;
+  }
+
+  /* Light red */
+  .lightred {
+    background-color: #e9b7b7;
+  }
+
+  /* Small text inside cells */
+  .small-text {
+    font-size: 0.75rem;
+    margin-top: 4px;
+    display: block;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 900px) {
+    body {
+      padding: 10px;
+    }
+    .container {
+      max-width: 100%;
+    }
+
+    .heading-text h1 {
+      font-size: 1.2rem;
+    }
+
+    .heading-text h2 {
+      font-size: 1rem;
+    }
+
+    .sub-info div {
+      flex: 1 1 100%;
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    table, th, td {
+      font-size: 0.75rem;
+    }
+
+    th.time-day, td.time-day {
+      width: 12%;
+    }
+  }
+
+  @media (max-width: 500px) {
+    table {
+      font-size: 0.65rem;
+    }
+
+    th, td {
+      padding: 4px 3px;
+    }
+  }
