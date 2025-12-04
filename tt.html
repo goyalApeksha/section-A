@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable - MCA</title>
+<style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --border-color: #000000;
+            
+            /* Subject Colors */
+            --color-blue-light: #a8dbf0; 
+            --color-green-light: #c5e065; 
+            --color-green-pale: #a2f0c8; 
+            --color-yellow: #fdfd66; 
+            --color-teal: #33b5e5; 
+            --color-orange: #fbbd86; 
+            --color-beige: #d8d4a6; 
+            --color-pink: #e6b8b7; 
+            --color-purple-pale: #d6cce5; 
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 20px;
+            font-size: 12px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .logo-placeholder {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 70px;
+            height: 80px;
+            background-color: #800000;
+            color: gold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 0 0 10px 10px;
+            font-size: 14px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        h1, h2, h3 { margin: 5px 0; }
+        h1 { font-size: 18px; font-weight: bold; text-transform: uppercase; }
+        h2 { font-size: 14px; font-weight: bold; }
+        h3 { font-size: 12px; font-weight: bold; }
+
+        .tm-tag {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-weight: bold;
+        }
+
+        .meta-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        /* Table Styles */
+        .timetable-wrapper { overflow-x: auto; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border: 2px solid var(--border-color);
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            text-align: center;
+            padding: 4px;
+            font-size: 11px;
+            vertical-align: middle;
+        }
+
+        th { background-color: #f0f0f0; font-weight: bold; }
+
+        /* Column Widths */
+        .col-day { width: 8%; }
+        .col-period { width: 9%; }
+        .col-lunch { width: 4%; }
+
+        /* Cell Content Styling */
+        .cell-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 50px;
+        }
+
+        .room-no { font-size: 10px; margin-bottom: 2px; }
+        .subject-code { font-weight: bold; font-size: 11px; }
+
+        /* Lunch Column */
+        .lunch-cell {
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 10px 0;
+            background-color: #ffffff;
+        }
+
+        /* Footer / Legend */
+        .footer-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 11px;
+        }
+
+        .legend-table {
+            border-collapse: collapse;
+            flex: 1;
+            min-width: 300px;
+            border: none;
+        }
+
+        .legend-table td {
+            border: 1px solid #000;
+            padding: 3px 5px;
+            text-align: left;
+        }
+
+        /* Background Classes */
+        .bg-blue { background-color: var(--color-blue-light); }
+        .bg-green { background-color: var(--color-green-light); }
+        .bg-green-pale { background-color: var(--color-green-pale); }
+        .bg-yellow { background-color: var(--color-yellow); }
+        .bg-teal { background-color: var(--color-teal); }
+        .bg-orange { background-color: var(--color-orange); }
+        .bg-beige { background-color: var(--color-beige); }
+        .bg-pink { background-color: var(--color-pink); }
+        .bg-purple { background-color: var(--color-purple-pale); }
+        .bg-white { background-color: #ffffff; }
+    </style>
+</head>
+<body>
+   <div class="container">
+    <header>
+    <div class="logo-placeholder">ABES</div>
+    <div class="tm-tag">TM-7</div>
+    
+    <h1>ABES Engineering College, Ghaziabad</h1>
+    <h2>CLASS TIME TABLE</h2>
+    <h3>DEPARTMENT: COMPUTER APPLICATIONS</h3>
+    
+    <div class="meta-info">
+        <div>Course: MCA<br>Semester/Section - I/A<br>Class Room No: AB-206-2 II Floor AB- Block</div>
+        <div style="text-align: right;">w.e.f: 22/9/2025<br>Session - 2025-26, ODD Semester</div>
+    </div>
+    </header>
+        <div class="timetable-wrapper">
+        <table>
+            <tbody>
+                <!-- Monday -->
+                <tr>
+                    <th>MONDAY</th>
+                    <td class="bg-blue"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25VC-101-AL</span></div></td>
+                    <td class="bg-green"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-102-KD</span></div></td>
+                    <td class="bg-yellow"><div class="cell-content"><span class="room-no">T AB-206</span><span class="subject-code">25VC102-LD</span></div></td>
+                    <td class="bg-teal"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25HM-101-SV</span></div></td>
+                    <td rowspan="5" class="lunch-cell">LUNCH</td>
+                    <td class="bg-blue"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25VC-101-AL</span></div></td>
+                    <td class="bg-green"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-101-MG</span></div></td>
+                    <td class="bg-orange"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-104-TY</span></div></td>
+                    <td class="bg-white"><div class="cell-content"><span>Library</span></div></td>
+                </tr>
+                <!-- Tuesday -->
+                <tr>
+                    <th>TUESDAY</th>
+                    <td class="bg-orange"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-104-TY</span></div></td>
+                    <td class="bg-teal"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25HM-101-SV</span></div></td>
+                    <td colspan="2" class="bg-pink"><div class="cell-content"><span class="room-no">P AB-206</span><span class="subject-code">25CA154-TY+AP</span></div></td>
+                    <td class="bg-beige"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-103-AK</span></div></td>
+                    <td class="bg-blue"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25VC-101-AL</span></div></td>
+                    <td class="bg-green"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-101-MG</span></div></td>
+                    <td class="bg-white"><div class="cell-content"><span>Library</span></div></td>
+                </tr>
+                <!-- Wednesday -->
+                <tr>
+                    <th>WEDNESDAY</th>
+                    <td class="bg-green"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-101-MG</span></div></td>
+                    <td class="bg-green"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-102-KD</span></div></td>
+                    <td colspan="2" class="bg-green-pale"><div class="cell-content"><span class="room-no">T AB-206</span><span class="subject-code">25VC102-HS</span></div></td>
+                    <td class="bg-beige"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-103-AK</span></div></td>
+                    <td colspan="2" class="bg-purple"><div class="cell-content"><span class="room-no">P AB-206</span><span class="subject-code">25CA151-MG+GA</span></div></td>
+                    <td class="bg-teal"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25HM-101-SV</span></div></td>
+                </tr>
+                <!-- Thursday -->
+                <tr>
+                    <th>THURSDAY</th>
+                    <td class="bg-blue"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25VC-101-AL</span></div></td>
+                    <td class="bg-green"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-101-MG</span></div></td>
+                    <td class="bg-teal"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25HM-101-SV</span></div></td>
+                    <td class="bg-green"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-102-KD</span></div></td>
+                    <td class="bg-orange"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-104-TY</span></div></td>
+                    <td class="bg-beige"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-103-AK</span></div></td>
+                    <td colspan="2" class="bg-pink"><div class="cell-content"><span class="room-no">P AB-206</span><span class="subject-code">25VC154-AL+AP</span></div></td>
+                </tr>
+                <!-- Friday -->
+                <tr>
+                    <th>FRIDAY</th>
+                    <td class="bg-green"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-102-KD</span></div></td>
+                    <td class="bg-green"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-101-MG</span></div></td>
+                    <td class="bg-beige"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-103-AK</span></div></td>
+                    <td class="bg-beige"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25CA-103-AK</span></div></td>
+                    <td class="bg-teal"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25HM-101-SV</span></div></td>
+                    <td class="bg-blue"><div class="cell-content"><span class="room-no">L AB-206</span><span class="subject-code">25VC-101-AL</span></div></td>
+                    <td colspan="2" class="bg-white"><div class="cell-content"><span>Mentor Mentee Meeting</span></div></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+       
+        <div class="footer-legend">
+        <table class="legend-table">
+            <tr><td>25CA101-Data Structure Using C++ -Ms. Meghna Gupta-MG</td></tr>
+            <tr><td>25CA102-Operating System-Ms. Kalpana Dwevedi-KD</td></tr>
+            <tr><td>25CA103- Essentials of Mathematics-Mr. Ajay Kumar-AK</td></tr>
+            <tr><td>25CA-104-Essentials of AI-Ms. Teena Yadav-TY</td></tr>
+            <tr><td>25VC101 Web Designing-I- Ms. Alpana Lodhi-AL</td></tr>
+            <tr><td>25HM101 Soft Skills106 -Dr. Seema varma-SV</td></tr>
+            <tr><td>25VC102-Employability Skills-1-Harshit Sharma-HS</td></tr>
+        </table>
+        <table class="legend-table">
+            <tr><td>25CA151-Data Structure Using C++ LAB -Ms. Meghna Gupta+Ms. Gunjan Agarwal-GA</td></tr>
+            <tr><td>25CA154- Essentials of AI LAB-Ms. Teena Yadav-TY+Mr. Asheesh pandey-AP</td></tr>
+            <tr><td>25VC151- Web Desiging-LAB- Ms. Alpana Lodhi-AL+ Mr. Asheesh pandey-AP</td></tr>
+        </table>
+    </div>
+    </div>
+</body>
+</head>
+</html>

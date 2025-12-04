@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Callisto - restaurant</title>
+    <style>
+        /* Basic Reset and Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* Navbar */
+        nav {
+            background: #59AC77; /* Warm brown for Indian theme */
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav li {
+            margin: 0 1rem;
+        }
+        nav a {
+            padding: 0.5rem 1rem;
+            display: block;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background: #FF8282;
+            border-radius: 5px;
+        }
+
+        /* Hero Section (Home) */
+        #home {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(bg.jpg) center/cover; 
+            height: 70vh; /* Decreased height from 100vh */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 70px; /* Account for fixed navbar */
+            width: 100%; /* Ensure full width */
+            max-width: none; /* Override section max-width */
+            margin: 0; /* Remove auto margins to eliminate side spaces */
+        }
+        #home h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        #home p {
+            font-size: 1.2rem;
+        }
+
+        /* Sections Padding */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            color: #FF8282; /* Italiann theme color */
+        }
+
+        /* Featured Dishes (Food Cart) */
+        #featured {
+            background: #FFF8DC; 
+        }
+        .dishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .dish-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .dish-card:hover {
+            transform: translateY(-5px);
+        }
+        .dish-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .dish-card-content {
+            padding: 1rem;
+            text-align: center;
+        }
+        .dish-card h3 {
+            margin-bottom: 0.5rem;
+            color: #3A6F43;
+        }
+        .dish-card p {
+            color: #3A6F43; /* Red for spice */
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Menu Section */
+        #menu {
+            background: #F5F5DC; /* Beige for menu */
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Increased min-width for better image fit */
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .menu-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden; /* Ensures image clips to card edges */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s; /* Optional hover effect */
+        }
+        .menu-item:hover {
+            transform: translateY(-3px); /* Slight lift on hover */
+        }
+        .menu-item img {
+            width: 100%; /* Full width of the card */
+            height: 150px; /* Fixed height for uniform grid alignment */
+            object-fit: cover; /* Crops image to fit without distortion (adjusts samosa photo nicely) */
+            display: block; /* Removes any inline spacing */
+        }
+        .menu-item-content {
+            padding: 1rem; /* Space for text below image */
+        }
+        .menu-item h3 {
+            margin-bottom: 0.5rem;
+            color: #FF8282;
+            font-size: 1.1rem;
+        }
+        .menu-item p {
+            color: #3A6F43;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .menu-price {
+            color: #3A6F43;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 0;
+        }
+
+        /* Contact Section */
+        #contact {
+            background: #FFFCFB;
+        }
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .contact-item {
+            padding: 1rem;
+        }
+        .contact-item h3 {
+            color: #FF8282;
+            margin-bottom: 0.5rem;
+        }
+        .contact-item p {
+            color: #59AC77;
+        }
+
+        /* Footer */
+        footer {
+            background:#FF8282;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav li {
+                margin: 0.5rem 0;
+            }
+            #home h1 {
+                font-size: 2rem;
+            }
+            #home p {
+                font-size: 1rem;
+            }
+            section {
+                padding: 2rem 1rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .dishes-grid {
+                grid-template-columns: 1fr;
+            }
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .menu-item img {
+                height: 120px; /* Adjusts samosa photo height on smaller screens */
+            }
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            #home {
+                height: 60vh; /* Further decrease on tablets/smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #home {
+                height: 60vh; /* Consistent shorter height on mobile */
+            }
+            .dish-card img {
+                height: 150px;
+            }
+            .menu-item img {
+                height: 100px; /* Further adjustment for mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#featured">Featured Dishes</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div>
+            <h1>Welcome to Cafe Callisto</h1>
+            <p>Authentic Italian Taste, Served with Love</p>
+        </div>
+    </section>
+
+    <!-- Featured Dishes Section -->
+    <section id="featured">
+        <h2>Featured Dishes</h2>
+        <div class="dishes-grid">
+            <div class="dish-card">
+                <img src="Carbonara spaghetti.jpeg" alt="Carbonara Spaghetti"> <!-- Fallback online if local missing -->
+                <div class="dish-card-content">
+                    <h3>Carbonara Spaghetti</h3>
+                    <p>₹455</p>
+                </div>
+            </div>
+            <div class="dish-card">
+                <img src="Penne all'Arrabbiata.jpg" alt="Penne all'Arrabbiata Pasta"> <!-- Fallback online if local missing -->
+                <div class="dish-card-content">
+                    <h3>Penne all'Arrabbiata Pasta</h3>
+                    <p>₹355</p>
+                </div>
+            </div>
+            <div class="dish-card">
+                <img src="Lasagne.jpg" alt="Lasagne "> <!-- Fallback online if local missing -->
+                <div class="dish-card-content">
+                    <h3> Baked Lasagne </h3>
+                    <p>₹479</p>
+                </div>
+            </div>
+             <div class="dish-card">
+             <img src="dish-di Zucca.jpg"  alt="Ravioli di Zucca"> <!-- Fallback online if local missing -->
+                <div class="dish-card-content">
+                <h3>Ravioli di Zucca</h3>
+                    <p>₹499</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="bruschetta.jpg" alt="Breakfast bruschetta"> 
+                <div class="menu-item-content">
+                    <h3>Starters</h3>
+                    <p>Breakfast bruschetta (2 pcs)</p>
+                    <p class="menu-price">₹179</p>
+                </div>
+            </div>
+            <div class="menu-item">
+                <img src="Liguria.jpg" alt="Liguria: Pesto alla Genovese"> 
+                <h3>Main Course</h3>
+                <p>Liguria: Pesto alla Genovese</p>
+                <p class="menu-price">₹445</p>
+            </div>
+            <div class="menu-item">
+                <img src="Mushroom & truffle.jpg" alt="Mushroom & truffle pizza"> 
+                <h3>Featured Pizza</h3>
+                <p>Mushroom & truffle pizza</p>
+                <p class="menu-price">₹670</p>
+            </div>
+            <div class="menu-item">
+                <img src="Tiramisù.jpg" alt="Tiramisù"> 
+                <h3>Desserts</h3>
+                <p>Tiramisù (1 pcs)</p>
+                <p class="menu-price">₹250</p>
+            </div>
+            <div class="menu-item">
+                <img src="Panna Cotta.jpg" alt="Panna Cotta"> 
+                <h3>Desserts</h3>
+                <p>Panna Cotta</p>
+                <p class="menu-price">₹189</p>
+            </div>
+            <div class="menu-item">
+                <img src="Peri Peri pasta.jpg" alt="Peri Peri pasta"> 
+                <h3>Vegetarian</h3>
+                <p>Peri Peri pasta</p>
+                <p class="menu-price">₹590</p>
+            </div>
+            <div class="menu-item">
+                <img src="Egg Drop Soup.jpg" alt=" Egg Drop Soup"> 
+                <h3>Soups</h3>
+                <p>Egg Drop Soup</p>
+                <p class="menu-price">₹259</p>
+            </div>
+            <div class="menu-item">
+                <img src="Mocha.jpg" alt="Chocolate Mocha"> 
+                <h3>Special Coffee</h3>
+                <p>Chocolate Mocha</p>
+                <p class="menu-price">₹120</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <h3>Address</h3>
+                <p>221, RDC Lane, Ghaziabad</p>
+            </div>
+            <div class="contact-item">
+                <h3>Phone</h3>
+                <p>+91 12 345 56780</p>
+            </div>
+            <div class="contact-item">
+                <h3>Email</h3>
+                <p>info@cafecallisto.in</p>
+            </div>
+            <div class="contact-item">
+                <h3>Hours</h3>
+                <p>Mon-Sun: 8AM - 12PM</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; Cafe Callisto developed by Anshika Sharma</p>
+    </footer>
+</body>
+</html>

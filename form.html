@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Contact Form</title>
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 5px;
+    }
+
+    .container {
+      width: 400px;
+      margin: 40px auto;
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 7.5px;
+      margin-bottom: 14.5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 80px;
+      resize: vertical;
+    }
+
+    .radio-group {
+      margin-bottom: 15px;
+    }
+
+    .radio-group label {
+      font-weight: normal;
+      display: inline-block;
+      margin-right: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+ <div class="container">
+    <h2>Contact Us Today!</h2>
+    <form>
+      <label>First Name</label>
+      <input type="text" placeholder="First Name" required>
+
+      <label>Last Name</label>
+      <input type="text" placeholder="Last Name" required>
+
+      <label>E-Mail</label>
+      <input type="email" placeholder="E-Mail Address" required>
+
+      <label>Phone #</label>
+      <input type="tel" placeholder="+9199999xxxxx">
+
+      <label>Address</label>
+      <input type="text" placeholder="Address">
+
+      <label>City</label>
+      <input type="text" placeholder="City">
+
+      <label>State</label>
+      <select>
+        <option value="">Please select your state</option>
+        <option>Uttar Pradesh</option>
+        <option>Delhi</option>
+        <option>Maharashtra</option>
+        <option>Bihar</option>
+      </select>
+
+      <label>Zip Code</label>
+      <input type="number" placeholder="Zip Code(120765)">
+
+      <label>Website or Domain Name</label>
+      <input type="text" placeholder="Website or domain name">
+
+      <div class="radio-group">
+        <label>Do you have hosting?</label><br>
+        <label><input type="radio" name="hosting" value="yes"> Yes</label>
+        <label><input type="radio" name="hosting" value="no"> No</label>
+      </div>
+
+      <label>Project Description</label>
+      <textarea placeholder="Enter Project Description"></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</body>
+</html>
